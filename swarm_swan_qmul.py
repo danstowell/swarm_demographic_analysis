@@ -17,8 +17,8 @@ import pandas as pd
 # user config
 
 datasrcs = {
-'2017-2018':'/home/dans/Documents/c4dm/athenaswan/swarm/workloads_1718_2018-09-14.csv',
-'2018-2019':'/home/dans/Documents/c4dm/athenaswan/swarm/workloads_1819_2018-10-12.csv',
+'2017-2018':'data/workloads_1718_2018-09-14.csv',
+'2018-2019':'data/workloads_1819_2018-10-12.csv',
 }
 
 ##########################################
@@ -137,7 +137,7 @@ def load_and_preprocess(datasrc, genderlookup):
 #########################################################################################
 if __name__ == '__main__':
 
-	with open('genderlookup.csv', 'r') as infp:
+	with open('data/genderlookup.csv', 'r') as infp:
 		rdr = csv.DictReader(infp, delimiter='\t')
 		genderlookup = {row['givenname']:row['gender'] for row in rdr}
 
