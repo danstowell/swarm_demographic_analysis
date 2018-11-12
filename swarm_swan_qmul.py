@@ -17,8 +17,8 @@ import pandas as pd
 # user config
 
 datasrcs = {
-'2017-2018':'data/workloads_1718_2018-09-14.csv',
-'2018-2019':'data/workloads_1819_2018-10-12.csv',
+'2017-2018':'data/workloads_1718_2018-11-12.csv',
+'2018-2019':'data/workloads_1819_2018-11-12.csv',
 }
 
 ##########################################
@@ -87,7 +87,8 @@ def load_and_preprocess(datasrc, genderlookup):
 
 	# drop those with as-yet-unidentified gender
 	unrecordedgender = [row['givenname'] for row in data if row['gender']=='']
-	if len(unrecordedgender):
+	count = len(unrecordedgender)
+	if count:
 		print("WARNING: %i entries have missing data for gender - will remove them from the analysis: %s" % (count, unrecordedgender))
 		data = [row for row in data if row['gender']!='']
 
