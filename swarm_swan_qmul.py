@@ -18,7 +18,7 @@ import pandas as pd
 
 datasrcs = {
 '2017-2018':'data/workloads_1718_2018-11-12.csv',
-'2018-2019':'data/workloads_1819_2018-11-12.csv',
+'2018-2019':'data/workloads_1819_2018-11-27.csv',
 }
 
 ##########################################
@@ -220,6 +220,10 @@ if __name__ == '__main__':
 
 			if workloadcat in data[yearlbl]['workloadcats']:
 
+				ax = sns.boxplot(x="contracttype", hue="gender", y=workloadcat, data=data[yearlbl]['prop'],
+							dodge=True, ax=axes[whichyear],
+						palette={'m': 'w', 'f': 'w'}, linewidth=0.1,
+						whis=0, showfliers=False, showcaps=False)
 				ax = sns.swarmplot(x="contracttype", hue="gender", y=workloadcat, data=data[yearlbl]['prop'],
 							dodge=True, ax=axes[whichyear])
 				ax.set_title(yearlbl)
