@@ -17,8 +17,10 @@ import pandas as pd
 # user config
 
 datasrcs = {
-'2017-2018':'data/workloads_1718_2018-11-12.csv',
-'2018-2019':'data/workloads_1819_2018-11-27.csv',
+#'2017-2018':'data/workloads_1718_2018-11-12.csv',
+#'2018-2019':'data/workloads_1819_2018-11-27.csv',
+'2018-2019':'data/workloads_1819_2019-11-06.csv',
+'2019-2020':'data/workloads_1920_2019-11-06.csv',
 }
 
 ##########################################
@@ -28,7 +30,8 @@ datasrcs = {
 fieldnamemapper = {
 	'User.gender': 'gender',
 	'User.givenName': 'givenname',
-	'JOB_FAMILY': 'contracttype'
+	'JOB_FAMILY': 'contracttype',
+	'link._jobFamily_id': 'contracttype',
 }
 
 fieldvalumapper = {
@@ -37,7 +40,9 @@ fieldvalumapper = {
 	'Teaching and Scholarship': 'T&S',
 }
 
-fields_to_skip = ['ID', 'JGF_ID', 'User._rootId', 'User.personNumber', 'ModuleWorkload.data_rsas_notes', 'User.email', 'GROUP', 'groupHeirarchy.0', 'groupHeirarchy.1', 'groupHeirarchy.2', 'groupHeirarchy.3', 'groupHeirarchy.4', 'groupHeirarchy.5']
+fields_to_skip = ['ID', 'JGF_ID', 'User._rootId', 'User.personNumber', 'ModuleWorkload.data_rsas_notes', 'User.email', 'GROUP', 'groupHeirarchy.0', 'groupHeirarchy.1', 'groupHeirarchy.2', 'groupHeirarchy.3', 'groupHeirarchy.4', 'groupHeirarchy.5',
+'link._group_id'
+]
 
 #########################################################################################
 # Loading the data
@@ -145,7 +150,7 @@ if __name__ == '__main__':
 	data = {k:load_and_preprocess(datasrc, genderlookup) for k,datasrc in datasrcs.items()}
 	years = sorted(data.keys())
 
-	print data['2018-2019']['raw'][data['2018-2019']['raw']['givenname']=='Dan Stowell']  # for example
+	print(data['2018-2019']['raw'][data['2018-2019']['raw']['givenname']=='Dan Stowell'])  # for example
 
 	#for row in data['prop']:
 	#	print row
